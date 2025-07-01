@@ -4,6 +4,7 @@ import { useState } from "react";
 import QuestionCard from "@/components/QuestionCard";
 import ResultView from "@/components/ResultView";
 import { questions } from "@/const/questions";
+import Image from "next/image";
 
 export default function Home() {
   const [step, setStep] = useState<"start" | "question" | "result">("start");
@@ -26,6 +27,21 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky via-white to-sky-200 flex items-center justify-center">
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 6 }}
+        className="absolute top-10 left-10 w-60 opacity-20"
+      >
+        <Image
+          src="/bg.svg"
+          alt="bg"
+          width={480}
+          height={480}
+          // fill
+          className="object-contain"
+        />
+      </motion.div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

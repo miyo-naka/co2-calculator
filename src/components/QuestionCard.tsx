@@ -10,7 +10,7 @@ export default function QuestionCard({
   onSelect,
 }: QuestionCardProps) {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-xl text-center space-y-4">
+    <div className="bg-white p-10 rounded-2xl shadow-xl text-center space-y-4">
       <h2 className="text-xl font-bold">{title}</h2>
       <div className="flex flex-wrap justify-center gap-4">
         {options.map((option) => (
