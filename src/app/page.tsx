@@ -4,20 +4,24 @@ import { useState } from "react";
 import QuestionCard from "@/components/QuestionCard";
 import ResultView from "@/components/ResultView";
 import { questions } from "@/const/questions";
-import Image from "next/image";
+import { calculateCO2 } from "@/utils/calculateCO2";
+import { Answer } from "@/types/Answer";
 
 export default function Home() {
   const [step, setStep] = useState<"start" | "question" | "result">("start");
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<Answer[]>([]);
 
   const handleStart = () => {
     setStep("question");
   };
 
-  const handleAnswer = (value: string) => {
-    const nextAnswers = [...answers, value];
-    setAnswers(nextAnswers);
+  const handleAnswer = (selectedValue: string | string[]) => {
+    const currentQuestion = questions[questionIndex];
+    setAnswers((prev) => [
+      ...prev,
+      { questionId: currentQuestion.id, selectedValue },
+    ]);
     if (questionIndex + 1 < questions.length) {
       setQuestionIndex((prev) => prev + 1);
     } else {
@@ -25,9 +29,11 @@ export default function Home() {
     }
   };
 
+  const totalCO2 = calculateCO2(answers, questions);
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky via-white to-sky-200 flex items-center justify-center">
-      <motion.div
+      {/* <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 6 }}
         className="absolute top-10 left-10 w-60 opacity-20"
@@ -40,7 +46,7 @@ export default function Home() {
           // fill
           className="object-contain"
         />
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -66,13 +72,17 @@ export default function Home() {
 
         {step === "question" && (
           <QuestionCard
-            title={questions[questionIndex].title}
-            options={questions[questionIndex].options}
+            question={questions[questionIndex]}
             onSelect={handleAnswer}
           />
         )}
+
         {step === "result" && (
-          <ResultView answers={answers} questions={questions} />
+          <ResultView
+            totalCO2={totalCO2}
+            answers={answers}
+            questions={questions}
+          />
         )}
       </motion.div>
     </main>
