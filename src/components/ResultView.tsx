@@ -15,11 +15,13 @@ export default function ResultView({
       <h2 className="text-4xl font-extrabold text-green-700 mb-4">
         結果発表！
       </h2>
-      <p className="text-xl text-gray-700">あなたの推定CO₂排出量は</p>
+      <p className="text-xl text-gray-700">あなた家庭のCO₂排出量は...</p>
       <div className="text-5xl font-extrabold text-green-800 bg-green-100 py-6 px-8 rounded-2xl shadow-inner">
         {totalCO2.toFixed(2)} kg
       </div>
-      <p className="text-sm text-gray-500 mt-2">※ 1ヶ月あたりの推定値です</p>
+      <p className="text-sm text-gray-500 mt-2">
+        ※ 1ヶ月あたりのざっくり推定値です
+      </p>
 
       <ul className="list-disc list-inside text-left inline-block">
         {answers.map((answer: Answer, index: number) => {
