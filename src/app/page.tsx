@@ -66,11 +66,7 @@ export default function Home() {
   const totalCO2 = calculateCO2(answers, questions);
 
   return (
-    <main
-      className="min-h-screen
-    bg-gradient-to-b from-sky via-white to-sky-200
-    flex items-center justify-center"
-    >
+    <main className="min-h-screen flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -26,9 +26,12 @@ body {
 }
 
 .bg-background-pattern {
-  background-image: url("/background.png");
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(210, 255, 255, 0.6)
+    ),
+    url("/background.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  opacity: 0.9;
 }
