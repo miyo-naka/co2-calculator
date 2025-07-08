@@ -2,6 +2,16 @@ import { Question } from "@/types/Question";
 
 export const questions: Question[] = [
   {
+    id: "u0",
+    type: "choice",
+    category: "utilities",
+    title: "電気の使用量は分かりますか？",
+    options: [
+      { label: "分かる（入力する）", value: "known" },
+      { label: "分からない（平均値を使う）", value: "unknown" },
+    ],
+  },
+  {
     id: "u1",
     category: "utilities",
     title: "月の電気使用量は？",
@@ -25,29 +35,26 @@ export const questions: Question[] = [
     unit: "m³",
     factor: 0.23,
   },
-
-  // {
-  //   id: "housingType",
-  //   category: "utilities",
-  //   title: "お住まいのタイプは？",
-  //   type
-  //   options: [
-  //     { label: "一軒家", value: "house" },
-  //     { label: "アパート", value: "apartment" },
-  //     { label: "その他", value: "other" },
-  //   ],
-  // },
-  // {
-  //   id: "familySize",
-  //   category: "utilities",
-  //   title: "家族の人数は？",
-  //   options: [
-  //     { label: "1人", value: "1", co2Factor: 1 },
-  //     { label: "2人", value: "2", co2Factor: 0.8 },
-  //     { label: "3人", value: "3", co2Factor: 0.7 },
-  //     { label: "4人以上", value: "4", co2Factor: 0.6 },
-  //   ],
-  // },
+  {
+    id: "u4",
+    category: "utilities",
+    title: "家族構成は？",
+    type: "choice",
+    options: [
+      { label: "1〜2人", value: "1-2" },
+      { label: "3人以上", value: "3+" },
+    ],
+  },
+  {
+    id: "u5",
+    category: "utilities",
+    title: "家のタイプは？",
+    type: "choice",
+    options: [
+      { label: "アパート・マンション", value: "apartment" },
+      { label: "戸建て", value: "house" },
+    ],
+  },
 
   {
     id: "t1",
@@ -60,10 +67,25 @@ export const questions: Question[] = [
   {
     id: "t2",
     category: "transport",
-    title: "月の公共交通の利用距離は？",
-    type: "input",
-    unit: "km",
-    factor: 0.03,
+    title: "平日の公共交通の利用頻度は？",
+    type: "choice",
+    options: [
+      { label: "週5回", value: "5", co2Factor: 18 },
+      { label: "週3〜4回", value: "3-4", co2Factor: 12.6 },
+      { label: "月1〜2回", value: "1-2", co2Factor: 1.8 },
+      { label: "ほとんどしない", value: "0", co2Factor: 0 },
+    ],
+  },
+  {
+    id: "t3",
+    category: "transport",
+    title: "休日の外出頻度は？",
+    type: "choice",
+    options: [
+      { label: "毎週出かける", value: "weekly", co2Factor: 7.2 },
+      { label: "月1〜2回", value: "monthly", co2Factor: 1.8 },
+      { label: "ほとんど出かけない", value: "none", co2Factor: 0 },
+    ],
   },
 
   {
@@ -88,31 +110,6 @@ export const questions: Question[] = [
       { label: "週1回", value: "週1回", score: 1 },
       { label: "週3回", value: "週3回", score: 3 },
       { label: "毎日", value: "毎日", score: 5 },
-    ],
-  },
-  {
-    id: "f3",
-    category: "food",
-    title: "よく使う調理方法は？",
-    type: "multi",
-    options: [
-      { label: "電子レンジ", value: "電子レンジ", score: 1 },
-      { label: "IH調理器", value: "IH調理器", score: 2 },
-      { label: "ガスコンロ", value: "ガスコンロ", score: 3 },
-      { label: "外食メイン", value: "外食メイン", score: 4 },
-    ],
-  },
-  {
-    id: "f4",
-    category: "food",
-    title: "よく使う調理家電は？",
-    type: "multi",
-    options: [
-      { label: "なし", value: "なし", score: 0 },
-      { label: "電子レンジ", value: "電子レンジ", score: 1 },
-      { label: "オーブン", value: "オーブン", score: 2 },
-      { label: "電気ケトル", value: "電気ケトル", score: 1 },
-      { label: "全て使用", value: "全て使用", score: 4 },
     ],
   },
 ];

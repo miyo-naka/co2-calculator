@@ -50,7 +50,7 @@ export default function QuestionCard({
           />
           <button
             onClick={handleInputSubmit}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full"
+            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 ml-2 rounded-full"
           >
             決定
           </button>

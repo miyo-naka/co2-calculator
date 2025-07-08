@@ -6,6 +6,7 @@ import ResultView from "@/components/ResultView";
 import { questions } from "@/const/questions";
 import { calculateCO2 } from "@/utils/calculateCO2";
 import { Answer } from "@/types/Answer";
+import { getAverageValues } from "@/const/getAverageValues";
 
 export default function Home() {
   const [step, setStep] = useState<"start" | "question" | "result">("start");
@@ -22,6 +23,39 @@ export default function Home() {
       ...prev,
       { questionId: currentQuestion.id, selectedValue },
     ]);
+
+    if (currentQuestion.id === "u0") {
+      if (selectedValue === "known") {
+        setQuestionIndex((prev) => prev + 1);
+        return;
+      } else {
+        setQuestionIndex((prev) => prev + 4); // u4へスキップ
+        return;
+      }
+    }
+    if (currentQuestion.id === "u4") {
+      setQuestionIndex((prev) => prev + 1); // u5へ
+      return;
+    }
+    if (currentQuestion.id === "u5") {
+      const family = answers.find((a) => a.questionId === "u4")?.selectedValue;
+      const house = selectedValue;
+
+      const averages = getAverageValues(family as string, house as string);
+
+      setAnswers((prev) => [
+        ...prev,
+        { questionId: "u1", selectedValue: averages.electric.toString() },
+        { questionId: "u2", selectedValue: averages.gas.toString() },
+        { questionId: "u3", selectedValue: averages.water.toString() },
+      ]);
+
+      // u1,u2,u3はスキップ → 次の非光熱系の質問へ
+      setQuestionIndex((prev) => prev + 1);
+      return;
+    }
+
+    // 通常の質問へ
     if (questionIndex + 1 < questions.length) {
       setQuestionIndex((prev) => prev + 1);
     } else {
@@ -32,22 +66,11 @@ export default function Home() {
   const totalCO2 = calculateCO2(answers, questions);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-sky via-white to-sky-200 flex items-center justify-center">
-      {/* <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 6 }}
-        className="absolute top-10 left-10 w-60 opacity-20"
-      >
-        <Image
-          src="/bg.svg"
-          alt="bg"
-          width={480}
-          height={480}
-          // fill
-          className="object-contain"
-        />
-      </motion.div> */}
-
+    <main
+      className="min-h-screen
+    bg-gradient-to-b from-sky via-white to-sky-200
+    flex items-center justify-center"
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
