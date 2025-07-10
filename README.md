@@ -1,37 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CO₂排出量計算アプリ
 
-## Getting Started
+家庭や生活スタイルから、月間のCO₂排出量を簡単に計算できるWebアプリです。<br />
+自分の生活が環境にどのくらい影響しているかを見える化し、行動のヒントを得ることができます。
 
-First, run the development server:
+
+## 使用技術
+
+- React 19
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- Framer Motion（アニメーション）
+
+## 機能一覧
+
+- 電気・ガス・水道のCO₂排出量を計算
+- 交通手段（車・公共交通）の排出量を計算
+- 食生活の影響を簡易スコアから推定
+- モデルケース（平均値）での計算も可能
+- 結果ページに合計CO₂排出量を表示
+- CO₂排出量の算出根拠ページを用意
+
+## 計算の考え方（概要）
+
+| カテゴリ | 項目 | 単位 | 参考係数 |
+| --- | --- | --- | --- |
+| 電気 | 月間使用量 | kWh | 0.43 kgCO₂/kWh |
+| ガス | 月間使用量 | m³ | 2.23 kgCO₂/m³ |
+| 水道 | 月間使用量 | m³ | 0.23 kgCO₂/m³ |
+| 車 | 月間距離 | km | 0.19 kgCO₂/km |
+| 公共交通 | 月間時間 | 時間 | 約0.9 kgCO₂/h |
+| 肉の頻度 | 回/週 | | 固定値（例：15kg/月） |
+| 外食頻度 | 回/週 | | 固定値（例：12kg/月） |
+
+詳細は `/explain` ページにて。
+
+## ローカル開発
 
 ```bash
+# 1. リポジトリをクローン
+git clone https://github.com/your-username/co2-calculator.git
+cd co2-calculator
+
+# 2. 必要パッケージをインストール
+npm install
+
+# 3. 開発サーバー起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# co2-calculator
