@@ -19,15 +19,14 @@ export function calculateCO2(answers: Answer[], questions: Question[]): number {
         (opt) => opt.value === selectedValue
       );
       if (selectedOption?.co2Factor) total += selectedOption.co2Factor;
-      if (selectedOption?.score) total += selectedOption.score * 10;
     }
 
-    if (question?.type === "multi" && Array.isArray(selectedValue)) {
-      selectedValue.forEach((val) => {
-        const opt = question.options?.find((o) => o.value === val);
-        if (opt?.score) total += opt.score * 10;
-      });
-    }
+    // if (question?.type === "multi" && Array.isArray(selectedValue)) {
+    //   selectedValue.forEach((val) => {
+    //     const opt = question.options?.find((o) => o.value === val);
+    //     if (opt?.score) total += opt.score * 10;
+    //   });
+    // }
   });
 
   return total;

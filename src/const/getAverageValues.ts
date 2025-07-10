@@ -1,6 +1,6 @@
-export const getAverageValues = (family: string, house: string) => {
-  const isSmallFamily = family === "1〜2人";
-  const isApartment = house === "アパート・マンション";
+export const getAverageValues = (familyType: string, house: string) => {
+  const isSmallFamily = familyType === "1-2";
+  const isApartment = house === "apartment";
 
   if (isSmallFamily && isApartment) {
     return { electric: 200, gas: 10, water: 9 }; // 一般的な小世帯アパート

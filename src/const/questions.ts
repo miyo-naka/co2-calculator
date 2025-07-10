@@ -94,10 +94,10 @@ export const questions: Question[] = [
     title: "肉を食べる頻度は？",
     type: "choice",
     options: [
-      { label: "毎日食べる", value: "毎日食べる", score: 5 },
-      { label: "週3〜4回", value: "週3〜4回", score: 3 },
-      { label: "月1〜2回", value: "月1〜2回", score: 1 },
-      { label: "ほとんど食べない", value: "ほとんど食べない", score: 0 },
+      { label: "毎日食べる", value: "毎日食べる", co2Factor: 15 },
+      { label: "週3〜4回", value: "週3〜4回", co2Factor: 10 },
+      { label: "月1〜2回", value: "月1〜2回", co2Factor: 5 },
+      { label: "ほとんど食べない", value: "ほとんど食べない", co2Factor: 1 },
     ],
   },
   {
@@ -106,10 +106,10 @@ export const questions: Question[] = [
     title: "外食の頻度は？",
     type: "choice",
     options: [
-      { label: "ほとんどしない", value: "ほとんどしない", score: 0 },
-      { label: "週1回", value: "週1回", score: 1 },
-      { label: "週3回", value: "週3回", score: 3 },
-      { label: "毎日", value: "毎日", score: 5 },
+      { label: "ほとんどしない", value: "ほとんどしない", co2Factor: 1 },
+      { label: "週1回", value: "週1回", co2Factor: 5 },
+      { label: "週3回", value: "週3回", co2Factor: 12 },
+      { label: "毎日", value: "毎日", co2Factor: 20 },
     ],
   },
 ];
