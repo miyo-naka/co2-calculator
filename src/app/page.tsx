@@ -12,6 +12,7 @@ export default function Home() {
   const [step, setStep] = useState<"start" | "question" | "result">("start");
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
+  const [familyType, setFamilyType] = useState<string | null>(null);
 
   const handleStart = () => {
     setStep("question");
@@ -34,14 +35,18 @@ export default function Home() {
       }
     }
     if (currentQuestion.id === "u4") {
+      console.log("u4回答（家族構成）:", selectedValue);
+      setFamilyType(selectedValue as string);
       setQuestionIndex((prev) => prev + 1); // u5へ
       return;
     }
     if (currentQuestion.id === "u5") {
-      const family = answers.find((a) => a.questionId === "u4")?.selectedValue;
-      const house = selectedValue;
+      const house = selectedValue as string;
+      console.log("u5回答（住宅タイプ）:", house);
+      console.log("家族構成（familyType）:", familyType);
 
-      const averages = getAverageValues(family as string, house as string);
+      const averages = getAverageValues(familyType as string, house as string);
+      console.log("計算された平均値:", averages);
 
       setAnswers((prev) => [
         ...prev,

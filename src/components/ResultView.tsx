@@ -1,5 +1,6 @@
 import { Answer } from "@/types/Answer";
 import { Question } from "@/types/Question";
+import Link from "next/link";
 
 export default function ResultView({
   totalCO2,
@@ -37,6 +38,15 @@ export default function ResultView({
           );
         })}
       </ul>
+
+      <button>
+        <Link
+          href="/explain"
+          className="text-2xl font-extrabold text-green-700 bg-green-100 hover:bg-green-200 px-6 py-2 rounded-full shadow transition"
+        >
+          Next
+        </Link>
+      </button>
     </div>
   );
 }
