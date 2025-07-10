@@ -3,6 +3,9 @@
 家庭や生活スタイルから、月間のCO₂排出量を簡単に計算できるWebアプリです。<br />
 自分の生活が環境にどのくらい影響しているかを見える化し、行動のヒントを得ることができます。
 
+<img src="https://github.com/user-attachments/assets/041c9aa5-6df8-4344-a75b-24e18b9639d9" width=60%><br><br>
+<img src="https://github.com/user-attachments/assets/b1ffc3c9-88d2-4ae8-b42b-ffd2f5d961d0" width=60%><br><br>
+
 
 ## 使用技術
 
@@ -39,7 +42,7 @@
 
 ```bash
 # 1. リポジトリをクローン
-git clone https://github.com/your-username/co2-calculator.git
+git clone https://github.com/miyo-naka/co2-calculator.git
 cd co2-calculator
 
 # 2. 必要パッケージをインストール
