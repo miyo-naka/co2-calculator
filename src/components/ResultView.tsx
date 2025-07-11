@@ -12,12 +12,12 @@ export default function ResultView({
   questions: Question[];
 }) {
   return (
-    <div className="text-center space-y-4 p-8">
-      <h2 className="text-4xl font-extrabold text-green-700 mb-4">
+    <div className="text-center space-y-4 px-4 py-8 sm:p-8">
+      <h2 className="text-2xl sm:text-3xl font-extrabold text-green-700 mb-4">
         結果発表！
       </h2>
       <p className="text-xl text-gray-700">あなた家庭のCO₂排出量は...</p>
-      <div className="text-5xl font-extrabold text-green-800 bg-green-100 py-6 px-8 rounded-2xl shadow-inner">
+      <div className="text-3xl sm:text-5xl font-extrabold text-green-800 bg-green-100 py-6 px-4 sm:px-8 rounded-2xl shadow-inner">
         {totalCO2.toFixed(2)} kg
       </div>
       <p className="text-sm text-gray-500 mt-2">
@@ -39,14 +39,12 @@ export default function ResultView({
         })}
       </ul>
 
-      <button>
-        <Link
-          href="/explain"
-          className="text-2xl font-extrabold text-green-700 bg-green-100 hover:bg-green-200 px-6 py-2 rounded-full shadow transition"
-        >
-          Next
-        </Link>
-      </button>
+      <Link
+        href="/explain"
+        className="text-2xl font-extrabold text-green-700 bg-green-100 hover:bg-green-200 px-6 py-2 rounded-full shadow transition"
+      >
+        Next
+      </Link>
     </div>
   );
 }
