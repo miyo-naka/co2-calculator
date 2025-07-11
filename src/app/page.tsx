@@ -34,19 +34,19 @@ export default function Home() {
         return;
       }
     }
+    if (currentQuestion.id === "u3") {
+      setQuestionIndex(questions.findIndex((q) => q.id === "t1"));
+      return;
+    }
     if (currentQuestion.id === "u4") {
-      console.log("u4回答（家族構成）:", selectedValue);
       setFamilyType(selectedValue as string);
       setQuestionIndex((prev) => prev + 1); // u5へ
       return;
     }
     if (currentQuestion.id === "u5") {
       const house = selectedValue as string;
-      console.log("u5回答（住宅タイプ）:", house);
-      console.log("家族構成（familyType）:", familyType);
 
       const averages = getAverageValues(familyType as string, house as string);
-      console.log("計算された平均値:", averages);
 
       setAnswers((prev) => [
         ...prev,
