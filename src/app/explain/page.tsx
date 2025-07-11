@@ -12,7 +12,7 @@ export default function ExplainPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center w-[75%] space-y-4 p-8">
+      <div className="text-center sm:w-[75%] space-y-4 p-8">
         <h2 className="text-4xl font-extrabold text-green-700 mb-4">
           CO₂排出量の説明
         </h2>
@@ -58,7 +58,7 @@ export default function ExplainPage() {
                 <p className="text-gray-700">
                   使用量が不明な場合は、以下の表を参考に排出量を計算します。
                 </p>
-                <table className="w-[50%] border mt-2 mx-auto text-gray-700">
+                <table className="sm:w-[50%] border mt-2 mx-auto text-gray-700">
                   <thead>
                     <tr>
                       <th className="p-2">世帯構成</th>

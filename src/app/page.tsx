@@ -75,11 +75,11 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/80 p-8 rounded-3xl shadow-xl max-w-3xl text-center"
+        className="bg-white/80 p-4 sm:p-8 mx-2 rounded-3xl shadow-xl sm:max-w-3xl  text-center"
       >
         {step === "start" && (
           <>
-            <h1 className="text-3xl text-gray-700 font-bold mb-4">
+            <h1 className="text-2xl sm:text-3xl text-gray-700 font-bold mb-4">
               家庭のCO₂排出計算
             </h1>
             <p className="text-gray-600 mb-6">
